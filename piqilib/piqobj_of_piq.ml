@@ -97,9 +97,7 @@ let trace_error obj s =
 
 
 let error obj s =
-  (*
   trace_error obj s;
-  *)
   raise (Error (!depth, s, Obj.repr obj))
 
 
