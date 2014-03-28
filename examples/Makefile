@@ -11,7 +11,7 @@ test_builtin:
 
 
 test_complex:
-	./test_getopt
+	sh test_getopt
 	./test_piqi empty
 	./test_piqi_proto empty
 
