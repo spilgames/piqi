@@ -11,6 +11,7 @@ test_builtin:
 
 
 test_complex:
+	sh test_getopt
 	./test_piqi empty
 	./test_piqi_proto empty
 
@@ -41,7 +42,6 @@ test_complex:
 	./test_piq function
 	./test_piqi_proto function
 
-	./test_getopt
 
 	test ! `which protoc` || (piqi of-proto --normalize addressbook.proto; \
 	./test_piqi addressbook.proto; \

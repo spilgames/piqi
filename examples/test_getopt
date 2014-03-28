@@ -6,6 +6,17 @@ set -ex
 # pretty-printing args as Piq AST
 #
 
+echo "Shell is: $SHELL"
+echo "`readlink -f $SHELL`" || true
+# built-in types
+
+(piqi getopt --debug 100 --trace -- true) || true
+piqi getopt --debug 100 --trace --type bool -- true true
+piqi getopt --debug 100 --trace --type bool -- true
+piqi getopt --type int -- -10
+piqi getopt --type float -- -0.inf
+
+
 piqi getopt     # empty input
 piqi getopt --  # empty input
 
@@ -20,14 +31,6 @@ piqi getopt -- 10 -20 30.0 -0.inf 0.nan '"foo\r"' '"\xff"' --fum [ --foo bar [] 
 # tested as a part of "piqi convert" testing as they share the same
 # functionality
 #
-
-# built-in types
-
-(piqi getopt --debug 100 --trace -- true) || true
-piqi getopt --debug 100 --trace --type bool -- true true
-piqi getopt --debug 100 --trace --type bool -- true
-piqi getopt --type int -- -10
-piqi getopt --type float -- -0.inf
 
 piqi getopt --type string -- foo     # parsing words as strings
 piqi getopt --type string -- foo\ bar
