@@ -49,7 +49,7 @@ let getopt_command () =
   (* interpret command-line arguments after "--" as Piq data *)
   let piq_ast_list = Piqi_getopt.getopt_piq () in
   let fff = fun x -> print_endline (Piq_gen.to_string x) in
-  List.map fff piq_ast_list;
+  (* List.map fff piq_ast_list; *)
   match piq_ast_list with
     | [] when !typename = "" -> () (* no data *)
     | _ when !typename = "" ->
