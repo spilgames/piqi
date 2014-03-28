@@ -9,10 +9,9 @@ set -ex
 echo "Shell is: $SHELL"
 echo "`readlink -f $SHELL`" || true
 # built-in types
-
-(piqi getopt --debug 100 --trace -- true) || true
-piqi getopt --debug 100 --trace --type bool -- true true
-piqi getopt --debug 100 --trace --type bool -- true
+piqi getopt --type bool -- true true
+piqi getopt --type bool -- true
+(piqi getopt -- true) || true
 piqi getopt --type int -- -10
 piqi getopt --type float -- -0.inf
 
