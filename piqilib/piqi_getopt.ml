@@ -352,13 +352,14 @@ let argv_start_index = ref 0
 
 (* find the position of the first argument after "--" *)
 let rest_fun arg =
-  print_string "What: ";
-  Printf.printf "i: %d " !argv_start_index;
-  print_endline arg;
   if !argv_start_index = 0 (* first argument after first occurence of "--" *)
-  then argv_start_index := !Arg.current + 1
-  else ();
-  Printf.printf "post: %d\n " !argv_start_index
+  then (
+    argv_start_index := !Arg.current + 1;
+    print_string "rest_fun: ";
+    Printf.printf "i: %d " !argv_start_index;
+    print_endline arg
+  )
+  else ()
 
 
 let arg__rest =
@@ -378,6 +379,8 @@ let getopt_piq () :piq_ast list =
       !argv_start_index
     )
   in
+  let fff = fun x y -> Printf.printf "argv[%d]: %s\n" x y in
+  Array.iteri fff Sys.argv;
   let tokens = parse_argv start in
   let piq_parser = Piq_parser.init_from_token_list getopt_filename tokens in
   let piq_ast_list = Piq_parser.read_all piq_parser in
