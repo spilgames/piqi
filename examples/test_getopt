@@ -5,9 +5,9 @@ set -ex
 #
 # pretty-printing args as Piq AST
 #
-
 echo "Shell is: $SHELL"
-echo "`readlink -f $SHELL`" || true
+ps -ef | grep $$ | grep -v grep | grep -v "ps -ef"
+echo "`readlink -f /bin/sh`" || true
 # built-in types
 piqi getopt --type bool -- true true
 piqi getopt --type bool -- true
