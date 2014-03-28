@@ -23,6 +23,8 @@ piqi getopt -- 10 -20 30.0 -0.inf 0.nan '"foo\r"' '"\xff"' --fum [ --foo bar [] 
 
 # built-in types
 
+(piqi getopt --debug 100 --trace -- true) || true
+piqi getopt --debug 100 --trace --type bool -- true true
 piqi getopt --debug 100 --trace --type bool -- true
 piqi getopt --type int -- -10
 piqi getopt --type float -- -0.inf
