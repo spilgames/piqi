@@ -65,7 +65,7 @@ let exit_usage () =
 
 let run_subcommand argv1 =
   match argv1 with
-    | "--version" ->
+    | "--version" | "version" ->
         print_endline Piqi_version.version
     | "help" | "--help" | "-h" ->
         usage ()
