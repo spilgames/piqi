@@ -1,0 +1,5 @@
+projectType: erlang
+build:
+  env:
+  - 'BUILD_EL6=true'
+
